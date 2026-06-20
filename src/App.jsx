@@ -44,9 +44,10 @@ function App() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
               style={{
-                fontFamily: 'Syne, sans-serif',
-                fontSize: '4rem',
+                fontFamily: 'Outfit, sans-serif',
+                fontSize: '3rem',
                 fontWeight: 800,
+                letterSpacing: '0.1em',
                 color: '#fff'
               }}
             >

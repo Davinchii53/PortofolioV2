@@ -7,10 +7,18 @@ const Hero = () => {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      padding: '0 5%',
+      alignItems: 'center',
       position: 'relative',
       overflow: 'hidden'
     }}>
+      
+      <div style={{
+        width: '100%',
+        maxWidth: '1200px',
+        padding: '0 5%',
+        position: 'relative',
+        zIndex: 10
+      }}>
       {/* Abstract Background Element */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
@@ -54,12 +62,12 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1 style={{ 
-            fontFamily: 'Syne, sans-serif', 
-            fontSize: 'clamp(4rem, 10vw, 12rem)', 
-            lineHeight: 0.9, 
+            fontFamily: 'Outfit, sans-serif', 
+            fontSize: 'clamp(3rem, 8vw, 8rem)', 
+            lineHeight: 1, 
             fontWeight: 800,
-            letterSpacing: '-0.04em',
-            margin: '0 0 2rem -0.04em'
+            letterSpacing: '-0.02em',
+            margin: '0 0 1.5rem 0'
           }}>
             Kelvin <br/>
             Anshary.

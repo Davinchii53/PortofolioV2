@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <section style={{ padding: '15% 5% 5%', background: '#050505', color: '#fff', textAlign: 'center' }}>
+    <section style={{ padding: '10rem 5% 5rem', background: '#050505', color: '#fff', textAlign: 'center' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         
         <motion.div

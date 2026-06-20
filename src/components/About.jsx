@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section style={{ padding: '10% 5%', backgroundColor: '#050505', color: '#fff' }}>
+    <section style={{ padding: '8rem 5%', backgroundColor: '#050505', color: '#fff' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         
         <motion.div

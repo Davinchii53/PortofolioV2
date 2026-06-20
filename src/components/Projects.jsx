@@ -137,7 +137,7 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   return (
-    <section style={{ padding: '10% 5%', background: '#050505' }}>
+    <section style={{ padding: '8rem 5%', background: '#050505' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}

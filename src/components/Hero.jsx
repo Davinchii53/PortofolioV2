@@ -126,6 +126,7 @@ const Hero = () => {
         </div>
         <span style={{ fontSize: '0.9rem', color: '#A1A1AA', letterSpacing: '0.1em' }}>SCROLL</span>
       </motion.div>
+      </div>
     </section>
   );
 };

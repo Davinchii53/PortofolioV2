@@ -11,9 +11,10 @@ function App() {
 
   useEffect(() => {
     // Simulate loading for the immersive feel
+    // TEMPORARY: Set to 0 for Claude consultation (was 2000)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 0);
     return () => clearTimeout(timer);
   }, []);
 

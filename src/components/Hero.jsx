@@ -70,7 +70,7 @@ const Hero = () => {
             maxWidth: '500px',
             lineHeight: 1.6
           }}>
-            I craft immersive, human-centered digital experiences. Bridging the gap between robust engineering and beautiful design.
+            I build fast, scalable web applications with a strong focus on clean architecture and highly polished user interfaces.
           </p>
         </motion.div>
       </div>

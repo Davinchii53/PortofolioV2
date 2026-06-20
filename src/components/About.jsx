@@ -46,7 +46,7 @@ const About = () => {
               lineHeight: 1.5,
               color: '#D4D4D8'
             }}>
-              I am an 18-year-old Computer Science student at Bina Nusantara Bandung. I specialize in building sophisticated web architectures from the ground up—merging robust backend logic with highly polished, interactive user interfaces.
+              I am a 19 year old Computer Science student at Bina Nusantara Bandung. I specialize in building sophisticated web architectures from the ground up—merging robust backend logic with highly polished, interactive user interfaces.
             </p>
           </motion.div>
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ShaderAnimation from './ShaderAnimation';
 
 const Hero = () => {
   return (
@@ -11,6 +12,7 @@ const Hero = () => {
       position: 'relative',
       overflow: 'hidden'
     }}>
+      <ShaderAnimation />
       
       <div style={{
         width: '100%',
@@ -19,24 +21,6 @@ const Hero = () => {
         position: 'relative',
         zIndex: 10
       }}>
-      {/* Abstract Background Element */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        style={{
-          position: 'absolute',
-          top: '20%',
-          right: '10%',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)',
-          borderRadius: '50%',
-          zIndex: -1,
-          filter: 'blur(40px)'
-        }}
-      />
-
       <div style={{ zIndex: 10 }}>
         <motion.div
           initial={{ y: 100, opacity: 0 }}

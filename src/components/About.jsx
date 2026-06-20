@@ -12,7 +12,7 @@ const About = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 style={{ 
-            fontFamily: 'Syne, sans-serif', 
+            fontFamily: 'Outfit, sans-serif', 
             fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
             fontWeight: 700,
             marginBottom: '4rem'

@@ -12,7 +12,7 @@ const Contact = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 style={{ 
-            fontFamily: 'Syne, sans-serif', 
+            fontFamily: 'Outfit, sans-serif', 
             fontSize: 'clamp(3rem, 8vw, 6rem)', 
             fontWeight: 800,
             marginBottom: '2rem',

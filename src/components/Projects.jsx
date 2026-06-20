@@ -81,7 +81,7 @@ const ProjectCard = ({ project, index }) => {
         {/* Project Info */}
         <div style={{ flex: '1 1 400px' }}>
           <h2 style={{ 
-            fontFamily: 'Syne, sans-serif', 
+            fontFamily: 'Outfit, sans-serif', 
             fontSize: 'clamp(2rem, 4vw, 3rem)', 
             marginBottom: '1rem',
             color: '#fff'
@@ -146,7 +146,7 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           style={{ marginBottom: '10rem', textAlign: 'center' }}
         >
-          <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: 'clamp(3rem, 6vw, 5rem)' }}>Selected Works</h2>
+          <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(3rem, 6vw, 5rem)' }}>Selected Works</h2>
         </motion.div>
 
         <div>

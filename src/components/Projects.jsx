@@ -25,6 +25,14 @@ const projects = [
     stack: 'HTML, CSS, JavaScript',
     image: '/images/cafe.png',
     link: 'https://github.com/Davinchii53/project_website'
+  },
+  {
+    id: 4,
+    title: 'Kawa Noodles',
+    description: 'Standard POS interface for high-throughput ordering. Custom spice modifier levels (1-8) and add on configurations. Transactions validated against closed loop balance.',
+    stack: 'React, TypeScript, Supabase',
+    image: '/images/kawas-cafe.png',
+    link: 'https://github.com/Davinchii53/kawas-cafe'
   }
 ];
 

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section style={{ padding: '8rem 5%', backgroundColor: '#050505', color: '#fff' }}>
+    <section className="about-section" style={{ padding: '8rem 5%', backgroundColor: '#050505', color: '#fff' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         
         <motion.div
@@ -11,7 +11,7 @@ const About = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 style={{ 
+          <h2 className="about-heading" style={{ 
             fontFamily: 'Outfit, sans-serif', 
             fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
             fontWeight: 700,
@@ -21,7 +21,7 @@ const About = () => {
           </h2>
         </motion.div>
 
-        <div style={{ 
+        <div className="about-grid" style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
           gap: '2rem' 
@@ -39,14 +39,14 @@ const About = () => {
               borderRadius: '24px',
               gridColumn: '1 / -1'
             }}
-            className="hover-target"
+            className="hover-target about-bento"
           >
             <p style={{ 
               fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', 
               lineHeight: 1.5,
               color: '#D4D4D8'
             }}>
-              I am a 19 year old Computer Science student at Bina Nusantara Bandung. I specialize in building sophisticated web architectures from the ground up—merging robust backend logic with highly polished, interactive user interfaces.
+              I am a 19 year old Computer Science student at Bina Nusantara Bandung. I specialize in building sophisticated web architectures from the ground up, merging robust backend logic with highly polished, interactive user interfaces.
             </p>
           </motion.div>
 
@@ -65,7 +65,7 @@ const About = () => {
               flexDirection: 'column',
               justifyContent: 'center'
             }}
-            className="hover-target"
+            className="hover-target about-bento"
           >
             <h3 style={{ fontSize: '1.2rem', color: '#A1A1AA', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Core Stack</h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
@@ -95,7 +95,7 @@ const About = () => {
               border: '1px solid rgba(255,255,255,0.05)',
               borderRadius: '24px'
             }}
-            className="hover-target"
+            className="hover-target about-bento"
           >
              <h3 style={{ fontSize: '1.2rem', color: '#A1A1AA', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>The Approach</h3>
              <p style={{ color: '#A1A1AA', lineHeight: 1.6, fontSize: '1.1rem' }}>

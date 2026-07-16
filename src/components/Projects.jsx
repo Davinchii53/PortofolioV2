@@ -57,7 +57,7 @@ const ProjectCard = ({ project, index }) => {
       }}
       className="project-card"
     >
-      <div style={{
+      <div className="project-card-layout" style={{
         display: 'flex',
         flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
         alignItems: 'center',
@@ -74,7 +74,7 @@ const ProjectCard = ({ project, index }) => {
           border: '1px solid rgba(255,255,255,0.05)',
           aspectRatio: '16/9',
           position: 'relative'
-        }} className="hover-target">
+        }} className="hover-target project-image">
           <motion.img 
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -87,7 +87,7 @@ const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Project Info */}
-        <div style={{ flex: '1 1 400px' }}>
+        <div className="project-info" style={{ flex: '1 1 400px' }}>
           <h2 style={{ 
             fontFamily: 'Outfit, sans-serif', 
             fontSize: 'clamp(2rem, 4vw, 3rem)', 
@@ -145,13 +145,14 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   return (
-    <section style={{ padding: '8rem 5%', background: '#050505' }}>
+    <section className="projects-section" style={{ padding: '8rem 5%', background: '#050505' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
+          className="projects-heading"
           style={{ marginBottom: '10rem', textAlign: 'center' }}
         >
           <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(3rem, 6vw, 5rem)' }}>Selected Works</h2>

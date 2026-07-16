@@ -76,6 +76,7 @@ const Hero = () => {
       </div>
 
       <motion.div 
+        className="hero-scroll-indicator"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}

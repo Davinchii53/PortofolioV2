@@ -124,9 +124,76 @@ img {
     padding: 0 2.5rem;
   }
   .custom-cursor {
-    display: none; /* Disable custom cursor on mobile */
+    display: none;
   }
   * {
     cursor: auto !important;
+  }
+
+  /* Hero */
+  .hero-scroll-indicator {
+    display: none !important;
+  }
+
+  /* About */
+  .about-section {
+    padding: 4rem 5% !important;
+  }
+  .about-heading {
+    margin-bottom: 2rem !important;
+  }
+  .about-bento {
+    padding: 1.8rem !important;
+  }
+  .about-grid {
+    gap: 1.2rem !important;
+  }
+
+  /* Projects */
+  .projects-section {
+    padding: 4rem 5% !important;
+  }
+  .projects-heading {
+    margin-bottom: 4rem !important;
+  }
+  .project-card {
+    margin-bottom: 6vh !important;
+  }
+  .project-card-layout {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  .project-image {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+  }
+  .project-info {
+    flex: 1 1 auto !important;
+  }
+
+  /* Contact */
+  .contact-section {
+    padding: 5rem 5% 3rem !important;
+  }
+  .contact-footer {
+    margin-top: 4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  .about-bento {
+    padding: 1.4rem !important;
+  }
+  .about-section {
+    padding: 3rem 4% !important;
+  }
+  .projects-section {
+    padding: 3rem 4% !important;
+  }
+  .contact-section {
+    padding: 3.5rem 4% 2rem !important;
   }
 }

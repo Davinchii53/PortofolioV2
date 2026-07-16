@@ -30,7 +30,7 @@ function App() {
             style={{
               position: 'fixed',
               inset: 0,
-              backgroundColor: '#050505',
+              backgroundColor: 'var(--bg-primary)',
               zIndex: 9999,
               display: 'flex',
               justifyContent: 'center',

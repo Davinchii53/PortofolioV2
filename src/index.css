@@ -1,5 +1,5 @@
 :root {
-  --bg-primary: #050505;
+  --bg-primary: oklch(0.12 0.01 250);
   --bg-secondary: #0A0A0A;
   --bg-tertiary: #141414;
   

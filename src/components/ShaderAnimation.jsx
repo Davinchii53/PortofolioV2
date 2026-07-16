@@ -23,6 +23,7 @@ export function ShaderAnimation() {
     const uniforms = {
       time: { type: "f", value: 1.0 },
       resolution: { type: "v2", value: new THREE.Vector2() },
+      mouse: { type: "v2", value: new THREE.Vector2(0, 0) },
     };
 
     // Vertex shader
@@ -40,6 +41,7 @@ export function ShaderAnimation() {
       precision highp float;
       uniform vec2 resolution;
       uniform float time;
+      uniform vec2 mouse;
         
       float random (in float x) {
           return fract(sin(x)*1e4);
@@ -56,7 +58,7 @@ export function ShaderAnimation() {
         uv.x = floor(uv.x * vScreenSize.x / fMosaicScal.x) / (vScreenSize.x / fMosaicScal.x);
         uv.y = floor(uv.y * vScreenSize.y / fMosaicScal.y) / (vScreenSize.y / fMosaicScal.y);       
           
-        float t = time * 0.06 + random(uv.x) * 0.4;
+        float t = time * 0.06 + random(uv.x) * 0.4 + mouse.x * 0.5 + mouse.y * 0.5;
         float lineWidth = 0.0008;
 
         vec3 color = vec3(0.0);
@@ -98,6 +100,12 @@ export function ShaderAnimation() {
     onWindowResize();
     window.addEventListener("resize", onWindowResize);
 
+    const onMouseMove = (e) => {
+      uniforms.mouse.value.x = (e.clientX / window.innerWidth) * 2 - 1;
+      uniforms.mouse.value.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+    window.addEventListener("mousemove", onMouseMove);
+
     const animate = () => {
       if (!isVisible) return;
       animationId = requestAnimationFrame(animate);
@@ -121,6 +129,7 @@ export function ShaderAnimation() {
       cancelAnimationFrame(animationId);
       observer.disconnect();
       window.removeEventListener("resize", onWindowResize);
+      window.removeEventListener("mousemove", onMouseMove);
       geometry.dispose();
       material.dispose();
       renderer.dispose();

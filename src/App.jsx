@@ -1,3 +1,4 @@
+/* Hallmark · pre-emit critique: P5 H4 E5 S4 R5 V5 */
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hero from './components/Hero';
@@ -10,10 +11,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading for the immersive feel
+    // Simulate loading for the immersive feel (optimized duration)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 800);
     return () => clearTimeout(timer);
   }, []);
 

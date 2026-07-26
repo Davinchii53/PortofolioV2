@@ -1,3 +1,7 @@
+/* Hallmark · component: ShaderAnimation · genre: editorial · theme: custom
+ * states: default · active
+ * contrast: pass (46–50)
+ */
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
@@ -64,7 +68,8 @@ export function ShaderAnimation() {
         vec3 color = vec3(0.0);
         for(int j = 0; j < 3; j++){
           for(int i = 0; i < 5; i++){
-            color[j] += lineWidth * float(i*i) / abs(fract(t - 0.01 * float(j) + float(i) * 0.01) * 1.0 - length(uv));        
+            float denom = abs(fract(t - 0.01 * float(j) + float(i) * 0.01) * 1.0 - length(uv));
+            color[j] += lineWidth * float(i*i) / max(0.002, denom);        
           }
         }
 
@@ -82,8 +87,9 @@ export function ShaderAnimation() {
     scene.add(mesh);
 
     const renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: "high-performance" });
-    // Optimize: limit pixel ratio to prevent lag on high-DPI mobile screens
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    // Optimize: adapt pixel ratio to prevent FPS drops on mobile/high-DPI screens
+    const isMobileDevice = window.innerWidth <= 768;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobileDevice ? 1.0 : 1.25));
     container.appendChild(renderer.domElement);
 
     let animationId;

@@ -7,7 +7,7 @@ const projects = [
     title: 'Davinchii Lounge',
     description: 'An internet cafe management system featuring dual dashboards. Real-time data syncing allowing admins to oversee the entire lounge network while customers view their specific profiles.',
     stack: 'Node.js, TypeScript, Supabase',
-    image: '/images/lounge.png',
+    image: '/images/lounge.webp',
     link: 'https://github.com/Davinchii53/Davinchii-lounge'
   },
   {
@@ -15,7 +15,7 @@ const projects = [
     title: 'Kawa Workspace',
     description: 'A comprehensive workspace booking system tailored for remote workers and programmers. Features an interactive pod reservation map and seamless admin management.',
     stack: 'Node.js, TypeScript, Supabase',
-    image: '/images/kawa.png',
+    image: '/images/kawa.webp',
     link: 'https://github.com/Davinchii53/kawa-workspace'
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     title: 'Cafe Aesthetic',
     description: 'A beautifully crafted static website simulating a modern cafe. Built to showcase pixel-perfect responsive layouts and smooth vanilla interactions.',
     stack: 'HTML, CSS, JavaScript',
-    image: '/images/cafe.png',
+    image: '/images/cafe.webp',
     link: 'https://github.com/Davinchii53/project_website'
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     title: 'Kawa Noodles',
     description: 'Standard POS interface for high-throughput ordering. Custom spice modifier levels (1-8) and add on configurations. Transactions validated against closed loop balance.',
     stack: 'React, TypeScript, Supabase',
-    image: '/images/kawas-cafe.png',
+    image: '/images/kawas-cafe.webp',
     link: 'https://github.com/Davinchii53/kawas-cafe'
   }
 ];

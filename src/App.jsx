@@ -11,11 +11,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading for the immersive feel (optimized duration)
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-    return () => clearTimeout(timer);
+    // Keep the loader up until fonts arrive so the wordmark never swaps typeface mid-transition (800ms minimum for the immersive feel)
+    const minDelay = new Promise(resolve => setTimeout(resolve, 800));
+    Promise.all([document.fonts.ready, minDelay]).then(() => setIsLoading(false));
   }, []);
 
   return (

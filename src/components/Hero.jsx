@@ -74,6 +74,7 @@ const Hero = () => {
           </p>
         </motion.div>
       </div>
+      </div>
 
       <motion.div 
         className="hero-scroll-indicator"
@@ -111,7 +112,6 @@ const Hero = () => {
         </div>
         <span style={{ fontSize: '0.9rem', color: '#A1A1AA', letterSpacing: '0.1em' }}>SCROLL</span>
       </motion.div>
-      </div>
     </section>
   );
 };

@@ -22,7 +22,7 @@ const Contact = () => {
           </h2>
           
           <p style={{ color: '#A1A1AA', fontSize: '1.2rem', marginBottom: '4rem' }}>
-            Currently available for new opportunities. Let's create something extraordinary.
+            Open for new opportunities.
           </p>
           
           <a 

@@ -5,23 +5,15 @@ const projects = [
   {
     id: 1,
     title: 'Davinchii Lounge',
-    description: 'An internet cafe management system featuring dual dashboards. Real-time data syncing allowing admins to oversee the entire lounge network while customers view their specific profiles.',
+    description: 'My attempts to make a full internet cafe interface, with an FnB feature. This project is using real-time data syncing, with an immersive internet cafe experience and its security.',
     stack: 'Node.js, TypeScript, Supabase',
     image: '/images/lounge.webp',
     link: 'https://github.com/Davinchii53/Davinchii-lounge'
   },
   {
-    id: 2,
-    title: 'Kawa Workspace',
-    description: 'A comprehensive workspace booking system tailored for remote workers and programmers. Features an interactive pod reservation map and seamless admin management.',
-    stack: 'Node.js, TypeScript, Supabase',
-    image: '/images/kawa.webp',
-    link: 'https://github.com/Davinchii53/kawa-workspace'
-  },
-  {
     id: 3,
     title: 'Cafe Aesthetic',
-    description: 'A beautifully crafted static website simulating a modern cafe. Built to showcase pixel-perfect responsive layouts and smooth vanilla interactions.',
+    description: 'My attempt at recreating a commercial cafe website for front-end capability.',
     stack: 'HTML, CSS, JavaScript',
     image: '/images/cafe.webp',
     link: 'https://github.com/Davinchii53/project_website'

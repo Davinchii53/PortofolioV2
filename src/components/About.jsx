@@ -17,7 +17,7 @@ const About = () => {
             fontWeight: 700,
             marginBottom: '4rem'
           }}>
-            Crafting code <span style={{ color: '#888' }}>with purpose.</span>
+            Currently learning <span style={{ color: '#888' }}>software engineering and IoT.</span>
           </h2>
         </motion.div>
 
@@ -39,7 +39,7 @@ const About = () => {
               lineHeight: 1.6,
               color: '#D4D4D8'
             }}>
-              I am a 19 year old Computer Science student at Bina Nusantara Bandung. I specialize in building sophisticated web architectures from the ground up, merging robust backend logic with highly polished, interactive user interfaces.
+              Currently studying computer science at Binus Bandung (B28), majoring in IoT. I'm learning to be a good software engineer by making solutions for the small problems I can find.
             </p>
           </motion.div>
 
@@ -75,7 +75,7 @@ const About = () => {
           >
              <h3 style={{ fontSize: '1rem', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>The Approach</h3>
              <p style={{ color: '#D4D4D8', lineHeight: 1.6, fontSize: 'clamp(1.1rem, 1.5vw, 1.3rem)' }}>
-               I don't just write code; I architect solutions. Whether it's a sleek static interface or a complex lounge management system with real-time database syncing, my focus is always on performance, scalability, and an impeccable user experience.
+               I make websites that are scalable and easy to use. I focus on performance, security, and scalability. Every small problem I see is an opportunity for a new solution.
              </p>
           </motion.div>
 

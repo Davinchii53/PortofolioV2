@@ -70,7 +70,7 @@ const Hero = () => {
             maxWidth: '500px',
             lineHeight: 1.6
           }}>
-            I build fast, scalable web applications with a strong focus on clean architecture and highly polished user interfaces.
+            Creating a solution for every problem, even if it's small and personal.
           </p>
         </motion.div>
       </div>

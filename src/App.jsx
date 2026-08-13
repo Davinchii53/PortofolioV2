@@ -9,11 +9,16 @@ import Cursor from './components/Cursor';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [fontsReady, setFontsReady] = useState(false);
 
   useEffect(() => {
-    // Keep the loader up until fonts arrive so the wordmark never swaps typeface mid-transition (800ms minimum for the immersive feel)
+    // Wordmark stays invisible until the real font arrives, so no typeface snap is ever visible
+    document.fonts.ready.then(() => setFontsReady(true));
+    // Keep the loader up until fonts arrive plus a short beat so the wordmark is seen in the correct typeface (800ms minimum for the immersive feel)
     const minDelay = new Promise(resolve => setTimeout(resolve, 800));
-    Promise.all([document.fonts.ready, minDelay]).then(() => setIsLoading(false));
+    Promise.all([document.fonts.ready, minDelay])
+      .then(() => new Promise(resolve => setTimeout(resolve, 500)))
+      .then(() => setIsLoading(false));
   }, []);
 
   return (
@@ -40,7 +45,7 @@ function App() {
           >
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
+              animate={{ scale: fontsReady ? 1 : 0.8, opacity: fontsReady ? 1 : 0 }}
               transition={{ duration: 0.5 }}
               style={{
                 fontFamily: 'Outfit, sans-serif',

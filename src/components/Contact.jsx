@@ -17,7 +17,7 @@ const Contact = () => {
         >
           <h2 style={{
             fontFamily: 'Outfit, sans-serif',
-            fontSize: 'clamp(3.6rem, 8vw, 6rem)',
+            fontSize: 'clamp(3.4rem, 8vw, 6rem)',
             fontWeight: 800,
             marginBottom: '2rem',
             lineHeight: 1
@@ -25,7 +25,7 @@ const Contact = () => {
             Let's build <br/> together.
           </h2>
 
-          <p style={{ color: '#A1A1AA', fontSize: 'clamp(1.6rem, 1.4vw, 1.8rem)', marginBottom: '4rem' }}>
+          <p style={{ color: '#A1A1AA', fontSize: 'var(--text-tagline)', marginBottom: '4rem' }}>
             Open for new opportunities.
           </p>
 
@@ -45,7 +45,7 @@ const Contact = () => {
           </div>
 
           {/* mailto: does nothing on machines without a mail app, so the address stays visible and selectable */}
-          <p style={{ color: '#A1A1AA', fontSize: '1.5rem', marginTop: '2rem' }}>
+          <p style={{ color: '#A1A1AA', fontSize: 'var(--text-small)', marginTop: '2rem' }}>
             or email <a href={`mailto:${EMAIL}`} className="text-link hover-target">{EMAIL}</a>
           </p>
         </motion.div>
@@ -67,7 +67,7 @@ const Contact = () => {
             gap: '2rem'
           }}
         >
-          <p style={{ color: '#A1A1AA', fontSize: '1.4rem' }}>
+          <p style={{ color: '#A1A1AA', fontSize: 'var(--text-label)' }}>
             © {new Date().getFullYear()} Kelvin Nabil Anshary.
           </p>
 

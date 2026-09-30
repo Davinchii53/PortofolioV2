@@ -99,7 +99,7 @@ const ProjectCard = ({ project, index }) => {
         <div className="project-info" style={{ flex: '1 1 400px' }}>
           <h3 style={{
             fontFamily: 'Outfit, sans-serif',
-            fontSize: 'clamp(2.4rem, 3vw, 3.2rem)',
+            fontSize: 'var(--text-title)',
             marginBottom: '1.2rem',
             color: '#fff'
           }}>
@@ -107,7 +107,7 @@ const ProjectCard = ({ project, index }) => {
           </h3>
           <p style={{
             color: '#A1A1AA',
-            fontSize: '1.6rem',
+            fontSize: 'var(--text-body)',
             lineHeight: 1.6,
             marginBottom: '2rem',
             maxWidth: '60ch'
@@ -123,9 +123,9 @@ const ProjectCard = ({ project, index }) => {
           }}>
             {project.stack.map((tech) => (
               <li key={tech} style={{
-                fontSize: '1.3rem',
+                fontSize: 'var(--text-label)',
                 color: '#E4E4E7',
-                padding: '0.6rem 1.2rem',
+                padding: '0.5rem 1.1rem',
                 background: 'rgba(255,255,255,0.08)',
                 borderRadius: '999px'
               }}>

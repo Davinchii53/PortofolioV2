@@ -35,7 +35,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <p style={{ 
-              fontSize: 'clamp(1.7rem, 1.5vw, 2rem)', 
+              fontSize: 'var(--text-lead)', 
               lineHeight: 1.6,
               color: '#D4D4D8'
             }}>
@@ -50,14 +50,14 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h3 style={{ fontSize: '1.3rem', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Core Stack</h3>
+            <h3 style={{ fontSize: 'var(--text-label)', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Core Stack</h3>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
               {['React', 'TypeScript', 'Node.js', 'Supabase', 'Framer Motion', 'MySQL'].map(skill => (
                 <li key={skill} style={{
-                  padding: '0.8rem 1.6rem',
+                  padding: '0.6rem 1.4rem',
                   border: '1px solid rgba(255,255,255,0.1)',
                   borderRadius: '50px',
-                  fontSize: '1.4rem',
+                  fontSize: 'var(--text-label)',
                   color: '#D4D4D8'
                 }}>
                   {skill}
@@ -73,8 +73,8 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-             <h3 style={{ fontSize: '1.3rem', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>The Approach</h3>
-             <p style={{ color: '#D4D4D8', lineHeight: 1.6, fontSize: 'clamp(1.6rem, 1.2vw, 1.8rem)' }}>
+             <h3 style={{ fontSize: 'var(--text-label)', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>The Approach</h3>
+             <p style={{ color: '#D4D4D8', lineHeight: 1.6, fontSize: 'var(--text-body)' }}>
                I make websites that are scalable and easy to use. I focus on performance, security, and scalability. Every small problem I see is an opportunity for a new solution.
              </p>
           </motion.div>

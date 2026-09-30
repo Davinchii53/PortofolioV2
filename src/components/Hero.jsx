@@ -32,7 +32,7 @@ const Hero = () => {
           <p style={{
             fontFamily: 'Inter, sans-serif',
             fontWeight: 400,
-            fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
+            fontSize: 'clamp(1.2rem, 1.5vw, 1.6rem)',
             color: '#A1A1AA',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
@@ -49,7 +49,7 @@ const Hero = () => {
         >
           <h1 style={{
             fontFamily: 'Outfit, sans-serif',
-            fontSize: 'clamp(4.4rem, 8vw, 8rem)',
+            fontSize: 'clamp(3.8rem, 8vw, 8rem)',
             lineHeight: 1,
             fontWeight: 800,
             letterSpacing: '-0.02em',
@@ -67,7 +67,7 @@ const Hero = () => {
         >
           <p style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: 'clamp(1.6rem, 1.4vw, 2rem)',
+            fontSize: 'var(--text-tagline)',
             color: '#A1A1AA',
             maxWidth: '60ch',
             lineHeight: 1.6

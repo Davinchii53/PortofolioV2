@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 
 const projects = [
@@ -6,44 +6,61 @@ const projects = [
     id: 1,
     title: 'Davinchii Lounge',
     description: 'My attempts to make a full internet cafe interface, with an FnB feature. This project is using real-time data syncing, with an immersive internet cafe experience and its security.',
-    stack: 'Node.js, TypeScript, Supabase',
+    stack: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
     image: '/images/lounge.webp',
-    link: 'https://github.com/Davinchii53/Davinchii-lounge'
+    imageAlt: 'Davinchii Lounge admin dashboard with active-pod and pending-order counters',
+    live: 'https://davinchii-lounge.vercel.app',
+    repo: 'https://github.com/Davinchii53/Davinchii-lounge'
   },
   {
     id: 3,
     title: 'Cafe Aesthetic',
     description: 'My attempt at recreating a commercial cafe website for front-end capability.',
-    stack: 'HTML, CSS, JavaScript',
+    stack: ['HTML', 'CSS', 'JavaScript'],
     image: '/images/cafe.webp',
-    link: 'https://github.com/Davinchii53/project_website'
+    imageAlt: 'Cafe Aesthetic landing page with the headline "Brewed for the Night."',
+    live: 'https://davinchii53.github.io/project_website/',
+    repo: 'https://github.com/Davinchii53/project_website'
   },
   {
     id: 4,
     title: 'Kawa Noodles',
     description: 'Standard POS interface for high-throughput ordering. Custom spice modifier levels (1-8) and add on configurations. Transactions validated against closed loop balance.',
-    stack: 'React, TypeScript, Supabase',
+    stack: ['React', 'TypeScript', 'Supabase'],
     image: '/images/kawas-cafe.webp',
-    link: 'https://github.com/Davinchii53/kawas-cafe'
+    imageAlt: 'Kawa Noodles point-of-sale login screen',
+    live: 'https://davinchii53.github.io/kawas-cafe/',
+    repo: 'https://github.com/Davinchii53/kawas-cafe'
   }
 ];
 
+const ArrowIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <path d="M7 17L17 7M17 7H7M17 7V17" />
+  </svg>
+);
+
 const ProjectCard = ({ project, index }) => {
   const cardRef = useRef(null);
+  const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "center center"]
   });
-  
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+
+  // Scale only. Tying opacity to scroll position kept on-screen text at 30-60% opacity,
+  // which failed contrast checks while people were reading it.
+  const scale = useTransform(scrollYProgress, [0, 1], [reduceMotion ? 1 : 0.92, 1]);
 
   return (
-    <motion.div 
+    <motion.article
       ref={cardRef}
-      style={{ 
-        scale, 
-        opacity,
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6 }}
+      style={{
+        scale,
         marginBottom: '15vh',
         position: 'relative'
       }}
@@ -56,88 +73,96 @@ const ProjectCard = ({ project, index }) => {
         gap: '4rem',
         flexWrap: 'wrap'
       }}>
-        
+
         {/* Project Image */}
-        <div style={{ 
-          flex: '1 1 500px', 
-          borderRadius: '24px', 
+        <div style={{
+          flex: '1 1 500px',
+          borderRadius: '24px',
           overflow: 'hidden',
           background: '#111',
           border: '1px solid rgba(255,255,255,0.05)',
           aspectRatio: '16/9',
           position: 'relative'
         }} className="hover-target project-image">
-          <motion.img 
+          <motion.img
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            src={project.image} 
-            alt={project.title} 
+            src={project.image}
+            alt={project.imageAlt}
+            loading="lazy"
+            decoding="async"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            // Fallback for missing images
-            onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1000' }}
           />
         </div>
 
         {/* Project Info */}
         <div className="project-info" style={{ flex: '1 1 400px' }}>
-          <h2 style={{ 
-            fontFamily: 'Outfit, sans-serif', 
-            fontSize: 'clamp(2rem, 4vw, 3rem)', 
-            marginBottom: '1rem',
+          <h3 style={{
+            fontFamily: 'Outfit, sans-serif',
+            fontSize: 'clamp(2.4rem, 3vw, 3.2rem)',
+            marginBottom: '1.2rem',
             color: '#fff'
           }}>
             {project.title}
-          </h2>
-          <p style={{ 
-            color: '#A1A1AA', 
-            fontSize: '1.1rem', 
-            lineHeight: 1.6, 
-            marginBottom: '2rem' 
+          </h3>
+          <p style={{
+            color: '#A1A1AA',
+            fontSize: '1.6rem',
+            lineHeight: 1.6,
+            marginBottom: '2rem',
+            maxWidth: '60ch'
           }}>
             {project.description}
           </p>
-          <div style={{ marginBottom: '2rem' }}>
-            <span style={{ 
-              fontSize: '0.9rem', 
-              color: '#fff', 
-              padding: '0.5rem 1rem', 
-              background: 'rgba(255,255,255,0.1)', 
-              borderRadius: '50px' 
-            }}>
-              {project.stack}
-            </span>
+          <ul aria-label="Tech stack" style={{
+            listStyle: 'none',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '0.8rem',
+            marginBottom: '2.4rem'
+          }}>
+            {project.stack.map((tech) => (
+              <li key={tech} style={{
+                fontSize: '1.3rem',
+                color: '#E4E4E7',
+                padding: '0.6rem 1.2rem',
+                background: 'rgba(255,255,255,0.08)',
+                borderRadius: '999px'
+              }}>
+                {tech}
+              </li>
+            ))}
+          </ul>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2rem' }}>
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary hover-target"
+              aria-label={`Live demo of ${project.title} (opens in a new tab)`}
+            >
+              Live demo <ArrowIcon />
+            </a>
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-ghost hover-target"
+              aria-label={`Source code of ${project.title} on GitHub (opens in a new tab)`}
+            >
+              Source code <ArrowIcon />
+            </a>
           </div>
-          
-          <a 
-            href={project.link} 
-            target="_blank" 
-            rel="noreferrer"
-            className="hover-target"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              color: '#fff',
-              borderBottom: '1px solid #fff',
-              paddingBottom: '0.2rem',
-              fontSize: '1.1rem',
-              fontFamily: 'Inter, sans-serif'
-            }}
-          >
-            View Repository
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
 const Projects = () => {
   return (
-    <section className="projects-section" style={{ padding: '8rem 5%', background: '#050505' }}>
+    <section id="work" className="projects-section" style={{ padding: '8rem 5%', background: '#050505' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}

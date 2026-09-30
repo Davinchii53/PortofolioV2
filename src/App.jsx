@@ -1,6 +1,6 @@
 /* Hallmark · pre-emit critique: P5 H4 E5 S4 R5 V5 */
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import About from './components/About';
@@ -17,7 +17,8 @@ function App() {
   }, []);
 
   return (
-    <>
+    // reducedMotion="user": transform/layout animations switch off when the OS asks for reduced motion
+    <MotionConfig reducedMotion="user">
       <Cursor />
       
       <AnimatePresence>
@@ -91,7 +92,7 @@ function App() {
           <Contact />
         </motion.main>
       )}
-    </>
+    </MotionConfig>
   );
 }
 

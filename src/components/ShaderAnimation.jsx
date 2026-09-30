@@ -86,7 +86,18 @@ export function ShaderAnimation() {
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: "high-performance" });
+    // WebGL can be unavailable (GPU blocklisted, hardware acceleration off, VMs / remote desktops).
+    // The constructor then throws, and an uncaught error in an effect unmounts the whole React
+    // tree, leaving visitors a blank page. Fall back to a static CSS glow instead.
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: "high-performance" });
+    } catch {
+      geometry.dispose();
+      material.dispose();
+      container.style.background = 'radial-gradient(ellipse at 50% 50%, rgba(140, 160, 255, 0.55), transparent 65%)';
+      return undefined;
+    }
     // Optimize: adapt pixel ratio to prevent FPS drops on mobile/high-DPI screens
     const isMobileDevice = window.innerWidth <= 768;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobileDevice ? 1.0 : 1.25));
@@ -119,11 +130,15 @@ export function ShaderAnimation() {
       renderer.render(scene, camera);
     };
 
+    // Respect the OS "reduce motion" setting: draw one still frame, never start the loop
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Optimize: Only animate when visible using IntersectionObserver
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         isVisible = true;
-        animate();
+        if (prefersReducedMotion) renderer.render(scene, camera);
+        else animate();
       } else {
         isVisible = false;
         cancelAnimationFrame(animationId);
@@ -148,6 +163,7 @@ export function ShaderAnimation() {
   return (
     <div
       ref={containerRef}
+      aria-hidden="true"
       style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, opacity: 0.2 }}
     />
   );

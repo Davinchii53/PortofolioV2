@@ -21,7 +21,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none; /* We will use a custom cursor */
+}
+
+/* Custom cursor only where there is a precise, hovering pointer (not touch laptops / tablets) */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none;
+  }
 }
 
 html {
@@ -97,6 +103,87 @@ img {
   border-radius: 24px;
 }
 
+/* Buttons & links: 48px min height meets touch-target guidance; hover lives in CSS
+   (not JS mouse handlers) so keyboard focus gets the same feedback */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-height: 4.8rem;
+  padding: 0 2.4rem;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-lg {
+  min-height: 5.6rem;
+  padding: 0 3.2rem;
+  font-size: 1.6rem;
+}
+
+.btn-primary {
+  background: var(--text-primary);
+  color: #050505;
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--text-primary);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.text-link {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 4.4rem;
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  opacity: 1;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .btn:hover,
+  .btn:focus-visible {
+    transform: none;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -117,9 +204,6 @@ img {
 
 /* Responsive */
 @media (max-width: 768px) {
-  html {
-    font-size: 55%;
-  }
   .container {
     padding: 0 2.5rem;
   }

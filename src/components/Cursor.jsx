@@ -1,26 +1,32 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 // Only devices with a precise, hovering pointer (mouse/trackpad) get the custom cursor.
 // Width-based checks miss touch laptops and tablets in landscape.
 const FINE_POINTER = '(hover: hover) and (pointer: fine)';
+const SPRING = { stiffness: 500, damping: 28, mass: 0.5 };
 
 const Cursor = () => {
   const [enabled] = useState(() => window.matchMedia(FINE_POINTER).matches);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+
+  // Motion values move the dot without re-rendering React on every mouse move
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const springX = useSpring(x, SPRING);
+  const springY = useSpring(y, SPRING);
 
   useEffect(() => {
     if (!enabled) return undefined;
 
     const moveCursor = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      x.set(e.clientX);
+      y.set(e.clientY);
       setVisible(true);
     };
 
     const handleMouseOver = (e) => {
-      // Check if hovering over clickable elements
       setIsHovering(Boolean(e.target.closest?.('a, button, .hover-target')));
     };
 
@@ -29,7 +35,7 @@ const Cursor = () => {
       if (!e.relatedTarget) setVisible(false);
     };
 
-    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('mousemove', moveCursor, { passive: true });
     window.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseout', handleMouseOut);
 
@@ -38,26 +44,19 @@ const Cursor = () => {
       window.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
     };
-  }, [enabled]);
+  }, [enabled, x, y]);
 
   if (!enabled) return null;
 
   return (
     <motion.div
       aria-hidden="true"
-      className={`custom-cursor ${isHovering ? 'hovering' : ''}`}
-      style={{ opacity: visible ? 1 : 0 }}
-      animate={{
-        x: position.x,
-        y: position.y,
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 500,
-        damping: 28,
-        mass: 0.5
-      }}
-    />
+      className={`custom-cursor${isHovering ? ' hovering' : ''}`}
+      style={{ x: springX, y: springY, opacity: visible ? 1 : 0 }}
+    >
+      {/* The inner dot is centred on the pointer and grows from its centre */}
+      <span className="custom-cursor-dot" />
+    </motion.div>
   );
 };
 

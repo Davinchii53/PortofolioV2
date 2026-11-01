@@ -1,88 +1,59 @@
-import { motion } from 'framer-motion';
+import Reveal from './Reveal';
+import SectionHeader from './SectionHeader';
+import { ABOUT_FACTS, STACK } from '../content';
 
-const About = () => {
-  return (
-    <section id="about" className="about-section" style={{ padding: '8rem 5%', backgroundColor: 'var(--bg-primary)', color: '#fff' }}>
-      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h2 className="about-heading" style={{ 
-            fontFamily: 'Outfit, sans-serif', 
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-            fontWeight: 700,
-            marginBottom: '4rem'
-          }}>
-            Currently learning <span style={{ color: '#888' }}>software engineering and IoT.</span>
+const About = () => (
+  <section id="about" className="section">
+    <div className="container">
+      <SectionHeader index="02" label="About" />
+
+      <div className="about-grid">
+        <Reveal className="about-side">
+          <h2 className="about-title">
+            Currently learning <span className="about-title-muted">software engineering and IoT.</span>
           </h2>
-        </motion.div>
 
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          gap: '4rem',
-          maxWidth: '800px'
-        }}>
-          {/* About Text */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p style={{ 
-              fontSize: 'var(--text-lead)', 
-              lineHeight: 1.6,
-              color: '#D4D4D8'
-            }}>
+          <dl className="facts">
+            {ABOUT_FACTS.map((fact) => (
+              <div key={fact.label} className="fact">
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+
+        <div className="about-body">
+          <Reveal delay={0.1}>
+            <p className="lead">
               Currently studying computer science at Binus Bandung (B28), majoring in IoT. I'm learning to be a good software engineer by making solutions for the small problems I can find.
             </p>
-          </motion.div>
+          </Reveal>
 
-          {/* Core Stack */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <h3 style={{ fontSize: 'var(--text-label)', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Core Stack</h3>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-              {['React', 'TypeScript', 'Node.js', 'Supabase', 'Framer Motion', 'MySQL'].map(skill => (
-                <li key={skill} style={{
-                  padding: '0.6rem 1.4rem',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: '50px',
-                  fontSize: 'var(--text-label)',
-                  color: '#D4D4D8'
-                }}>
-                  {skill}
-                </li>
+          <Reveal delay={0.15}>
+            <h3 className="label">The Approach</h3>
+            <p className="body-text">
+              I make websites that are scalable and easy to use. I focus on performance, security, and scalability. Every small problem I see is an opportunity for a new solution.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <h3 className="label">Core Stack</h3>
+            <div className="stack-groups">
+              {STACK.map((group) => (
+                <div key={group.group} className="stack-group">
+                  <h4 className="stack-group-name">{group.group}</h4>
+                  <ul className="chips">
+                    {group.items.map((skill) => <li key={skill} className="chip">{skill}</li>)}
+                  </ul>
+                </div>
               ))}
-            </ul>
-          </motion.div>
-
-          {/* Approach Text */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-             <h3 style={{ fontSize: 'var(--text-label)', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>The Approach</h3>
-             <p style={{ color: '#D4D4D8', lineHeight: 1.6, fontSize: 'var(--text-body)' }}>
-               I make websites that are scalable and easy to use. I focus on performance, security, and scalability. Every small problem I see is an opportunity for a new solution.
-             </p>
-          </motion.div>
-
+            </div>
+          </Reveal>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;

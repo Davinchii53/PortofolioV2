@@ -1,97 +1,28 @@
-/* Hallmark · pre-emit critique: P5 H4 E5 S4 R5 V5 */
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
+import { MotionConfig } from 'framer-motion';
+import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import Cursor from './components/Cursor';
 
+// No blocking loader: the hero paints straight away and animates itself in.
+// Work comes before About, so visitors see what Kelvin built first.
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Keep the loader up until fonts arrive so the wordmark never swaps typeface mid-transition (800ms minimum for the immersive feel)
-    const minDelay = new Promise(resolve => setTimeout(resolve, 800));
-    Promise.all([document.fonts.ready, minDelay]).then(() => setIsLoading(false));
-  }, []);
-
   return (
     // reducedMotion="user": transform/layout animations switch off when the OS asks for reduced motion
     <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#main">Skip to content</a>
       <Cursor />
-      
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div 
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              backgroundColor: 'var(--bg-primary)',
-              zIndex: 9999,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column',
-              gap: '2rem'
-            }}
-          >
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              style={{
-                fontFamily: 'Outfit, sans-serif',
-                fontSize: '3rem',
-                fontWeight: 800,
-                letterSpacing: '0.1em',
-                color: '#fff'
-              }}
-            >
-              KELVIN.
-            </motion.div>
-            <motion.div 
-              style={{
-                width: '200px',
-                height: '2px',
-                backgroundColor: 'rgba(255,255,255,0.1)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-            >
-              <motion.div 
-                initial={{ x: '-100%' }}
-                animate={{ x: '100%' }}
-                transition={{ duration: 1.5, ease: 'easeInOut', repeat: Infinity }}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  backgroundColor: '#fff'
-                }}
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {!isLoading && (
-        <motion.main
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-        </motion.main>
-      )}
+      <Nav />
+      <main id="main" tabIndex={-1}>
+        <Hero />
+        <Projects />
+        <About />
+        <Contact />
+      </main>
+      <Footer />
     </MotionConfig>
   );
 }
